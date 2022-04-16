@@ -81,6 +81,9 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         // we can find last node, then concat B
+        if (A == null) {
+            return B;
+        }
         IntList origin = A;
         while (A.rest != null) {
             A = A.rest;
