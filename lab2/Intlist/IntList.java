@@ -5,7 +5,7 @@ import java.util.Formatter;
  * with a large number of additional methods.
  *
  * @author P. N. Hilfinger, with some modifications by Josh Hug and melaniecebula
- *         [Do not modify this file.]
+ * [Do not modify this file.]
  */
 public class IntList {
     /**
@@ -29,7 +29,7 @@ public class IntList {
      * A List with null rest, and first = 0.
      */
     public IntList() {
-    /* NOTE: public IntList () { }  would also work. */
+        /* NOTE: public IntList () { }  would also work. */
         this(0, null);
     }
 
@@ -37,7 +37,6 @@ public class IntList {
      * Returns a list equal to L with all elements squared. Destructive.
      */
     public static void dSquareList(IntList L) {
-
         while (L != null) {
             L.first = L.first * L.first;
             L = L.rest;
@@ -81,8 +80,13 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        // we can find last node, then concat B
+        IntList origin = A;
+        while (A.rest != null) {
+            A = A.rest;
+        }
+        A.rest = B;
+        return origin;
     }
 
     /**
@@ -90,23 +94,28 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        // 难处理的是如果每添加一个Anode，并且给考虑是否要续长度的话，会容易断开，或者多添加一个节点
+        // 所以要在添加节点前就判断
+        // 循环实现方式
+        // if (A == null) {
+        //    return B;
+        // }
+        // IntList p = new IntList(A.first, null);
+        // IntList p2 = p;
+        // while (A.rest != null) {
+        //    p2.rest = new IntList(A.rest.first, null);
+        //    A = A.rest;
+        //    p2 = p2.rest;
+        // }
+        // p2.rest = B;
+        // return p;
+
+        // 递归实现方式
+        if (A == null) {
+            return B;
+        }
+        return new IntList(A.first, catenate(A.rest, B));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**

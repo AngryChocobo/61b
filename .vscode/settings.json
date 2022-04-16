@@ -1,6 +1,5 @@
 {
-    "java.project.sourcePaths": [
-        "hw0",
-        "proj0"
-    ]
+  "java.project.sourcePaths": [
+    "hw0"
+  ]
 }
